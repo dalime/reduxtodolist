@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
+import TodoFilter from './TodoFilter';
+
 export default class TodoApp extends Component {
   constructor() {
     super();
@@ -52,6 +54,10 @@ export default class TodoApp extends Component {
     this.props.sortTodos();
   }
 
+  _filter(text) {
+    this.props.filterTodos(text);
+  }
+
   render() {
     let { todos } = this.props;
 
@@ -72,6 +78,7 @@ export default class TodoApp extends Component {
       <div>
         <h3>Todo List</h3>
         <button className="btn btn-default" onClick={this._sort}>Sort A-Z</button>
+        <TodoFilter todos={todos} filterTodos={this._filter}/>
         <ol>
           {Todos}
         </ol>

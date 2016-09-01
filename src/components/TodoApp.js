@@ -5,19 +5,25 @@ import { createTodo } from '../actions/TodoActions';
 import { deleteTodo } from '../actions/TodoActions';
 import { editTodo } from '../actions/TodoActions';
 import { sortTodos } from '../actions/TodoActions';
+import { filterTodos } from '../actions/TodoActions';
 
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
 class TodoApp extends Component {
   render() {
-    let { todos, createTodo, deleteTodo, editTodo, sortTodos } = this.props;
+    let { todos, createTodo, deleteTodo, editTodo, sortTodos, filterTodos } = this.props;
 
     return (
       <div className="container">
         <h1>Todos</h1>
         <TodoForm createTodo={createTodo} />
-        <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} sortTodos={sortTodos}/>
+        <TodoList todos={todos}
+          deleteTodo={deleteTodo}
+          editTodo={editTodo}
+          sortTodos={sortTodos}
+          filterTodos={filterTodos}
+        />
       </div>
     )
   }
@@ -42,6 +48,9 @@ function mapDispatchToProps(dispatch) {
     },
     sortTodos() {
       dispatch(sortTodos());
+    },
+    filterTodos(text) {
+      dispatch(filterTodos(text));
     }
   }
 }

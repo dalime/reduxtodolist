@@ -4,23 +4,18 @@ export default function todos(state = [], action) {
       return state.concat(action.payload.todo);
       break;
     case 'DELETE_TODO':
-      return state.filter((todo, index) => {
-        if (index === action.payload.index) return false;
-        return true;
-      })
+      return state.filter((todo, index) => index === action.payload.index ? false : true);
       break;
     case 'EDIT_TODO':
-      return state.map((todo, index) => {
-        if (index === action.payload.index) {
-          return action.payload.todo;
-        } else {
-          return todo;
-        }
-      });
+      return state.map((todo, index) => index === action.payload.index ? action.payload.todo : todo);
       break;
     case 'SORT_TODOS':
-      return state.sort();
+      let newArr = [];
+      state.forEach(todo => newArr.push(todo));
+      return newArr.sort();
       break;
+    case 'FILTER_TODOS':
+      console.log ('action.payload.text:', action.payload.text);
     default:
       return state;
   }

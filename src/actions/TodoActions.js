@@ -25,6 +25,14 @@ export function sortTodos() {
   }
 }
 
+export function filterTodos(text) {
+  console.log ('text:', text);
+  return {
+    type: 'FILTER_TODOS',
+    payload: { text }
+  }
+}
+
 // const TodoActions = {
 //
 // }
