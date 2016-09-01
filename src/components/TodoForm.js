@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
+const style = {
+  addButton: {
+    margin: 12,
+    backgroundColor: "blue"
+  }
+};
+
 export default class TodoForm extends Component {
   constructor() {
     super();
@@ -32,8 +42,15 @@ export default class TodoForm extends Component {
     return (
       <form onSubmit={this._onSubmit} className="form-group">
         <h3>Add Todo</h3>
-        <input type="text" value={todo} onChange={this._onInputChange} className="form-control"/>
-        <button className="btn btn-success">Add</button>
+        <TextField
+          hintText="Todo"
+          floatingLabelText="Add Todo"
+          floatingLabelFixed={false}
+          onChange={this._onInputChange}
+          value={todo}
+        /><br />
+        {/* <input type="text" value={todo} onChange={this._onInputChange} className="form-control"/> */}
+        <RaisedButton label="Add" secondary={true} style={style.addButton} />
       </form>
     )
   }

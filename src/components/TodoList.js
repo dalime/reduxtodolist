@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
+import FontIcon from 'material-ui/FontIcon';
+import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+
 import TodoFilter from './TodoFilter';
+
+const iconStyles = {
+  marginRight: 24,
+};
 
 export default class TodoApp extends Component {
   constructor() {
@@ -79,7 +86,7 @@ export default class TodoApp extends Component {
       return (
         <div key={index}>
           <li onDoubleClick={this._delete.bind(null, index)}>{todo}</li>
-          <button className="btn btn-primary" onClick={this._openModal.bind(null, index, todo)}>Edit</button>
+          <span onClick={this._openModal.bind(null, index, todo)}><FontIcon className="material-icons" style={iconStyles}>edit</FontIcon></span>
         </div>
       )
     })

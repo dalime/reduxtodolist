@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
+const style = {
+  addButton: {
+    margin: 12,
+    backgroundColor: "blue"
+  }
+};
+
 export default class TodoFilter extends Component {
   constructor() {
     super();
@@ -31,7 +41,13 @@ export default class TodoFilter extends Component {
     return (
       <form onSubmit={this._search} className="form-group">
         <h5>Search</h5>
-        <input type="text" onChange={this._onInputChange} className="form-control" autoComplete="on"/>
+        <TextField
+          hintText="Search"
+          floatingLabelText="Search Text"
+          floatingLabelFixed={false}
+          onChange={this._onInputChange}
+        /><br />
+        {/* <input type="text" onChange={this._onInputChange} className="form-control" autoComplete="on"/> */}
         <button className="btn btn-warning">Search</button>
       </form>
     )
