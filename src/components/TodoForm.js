@@ -30,9 +30,10 @@ export default class TodoForm extends Component {
     let { todo } = this.state;
 
     return (
-      <form onSubmit={this._onSubmit}>
-        <input type="text" value={todo} onChange={this._onInputChange}/>
-        <button>Add</button>
+      <form onSubmit={this._onSubmit} className="form-group">
+        <h3>Add Todo</h3>
+        <input type="text" value={todo} onChange={this._onInputChange} className="form-control"/>
+        <button className="btn btn-success">Add</button>
       </form>
     )
   }
