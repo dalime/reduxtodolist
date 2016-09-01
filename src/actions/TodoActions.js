@@ -19,20 +19,6 @@ export function editTodo(index, todo) {
   }
 }
 
-export function sortTodos() {
-  return {
-    type: 'SORT_TODOS'
-  }
-}
-
-export function filterTodos(text) {
-  console.log ('text:', text);
-  return {
-    type: 'FILTER_TODOS',
-    payload: { text }
-  }
-}
-
 // const TodoActions = {
 //
 // }

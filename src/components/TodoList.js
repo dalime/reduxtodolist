@@ -10,7 +10,9 @@ export default class TodoApp extends Component {
     this.state = {
       showModal: false,
       todoText: '',
-      todoIndex: ''
+      todoIndex: '',
+      filterText: '',
+      sorted: ''
     }
 
     this._delete = this._delete.bind(this);
@@ -19,6 +21,7 @@ export default class TodoApp extends Component {
     this._onInputChange = this._onInputChange.bind(this);
     this._edit = this._edit.bind(this);
     this._sort = this._sort.bind(this);
+    this._filter = this._filter.bind(this);
   }
 
   _delete(index) {
@@ -51,19 +54,26 @@ export default class TodoApp extends Component {
 
   _sort(e) {
     e.preventDefault();
-    this.props.sortTodos();
+    this.setState({sorted: true})
   }
 
   _filter(text) {
-    this.props.filterTodos(text);
+    this.setState({filterText: text});
   }
 
   render() {
     let { todos } = this.props;
 
-    // todos = todos.filter(todo => {
-    //
-    // })
+    if (this.state.filterText) {
+      todos = todos.filter(todo => {
+        if (todo.includes(this.state.filterText)) return true;
+        return false;
+      })
+    }
+
+    if (this.state.sorted) {
+      todos.sort();
+    }
 
     let Todos = todos.map((todo, index) => {
       return (

@@ -28,11 +28,10 @@ export default class TodoFilter extends Component {
   }
 
   render() {
-
     return (
       <form onSubmit={this._search} className="form-group">
         <h5>Search</h5>
-        <input type="text" onChange={this._onInputChange} className="form-control" autoComplete={this.state.results}/>
+        <input type="text" onChange={this._onInputChange} className="form-control" autoComplete="on"/>
         <button className="btn btn-warning">Search</button>
       </form>
     )
