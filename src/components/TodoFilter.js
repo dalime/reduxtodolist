@@ -3,10 +3,15 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
+import AutoComplete from 'material-ui/AutoComplete';
+
 const style = {
   addButton: {
     margin: 12,
     backgroundColor: "blue"
+  },
+  searchButton: {
+    margin: 12
   }
 };
 
@@ -15,8 +20,7 @@ export default class TodoFilter extends Component {
     super();
 
     this.state = {
-      filterText: '',
-      results: []
+      filterText: ''
     }
 
     this._onInputChange = this._onInputChange.bind(this);
@@ -40,15 +44,14 @@ export default class TodoFilter extends Component {
   render() {
     return (
       <form onSubmit={this._search} className="form-group">
-        <h5>Search</h5>
-        <TextField
-          hintText="Search"
-          floatingLabelText="Search Text"
-          floatingLabelFixed={false}
+        <AutoComplete
+          floatingLabelText="Search"
+          filter={AutoComplete.caseInsensitiveFilter}
+          dataSource={this.props.todos}
           onChange={this._onInputChange}
+          maxSearchResults={5}
         /><br />
-        {/* <input type="text" onChange={this._onInputChange} className="form-control" autoComplete="on"/> */}
-        <button className="btn btn-warning">Search</button>
+        <RaisedButton type="submit" label="Search" secondary={true} style={style.searchButton} />
       </form>
     )
   }

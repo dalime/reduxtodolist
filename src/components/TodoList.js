@@ -3,6 +3,8 @@ import { Modal, Button } from 'react-bootstrap';
 
 import FontIcon from 'material-ui/FontIcon';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
+import {List, ListItem} from 'material-ui/List';
 
 import TodoFilter from './TodoFilter';
 
@@ -85,7 +87,8 @@ export default class TodoApp extends Component {
     let Todos = todos.map((todo, index) => {
       return (
         <div key={index}>
-          <li onDoubleClick={this._delete.bind(null, index)}>{todo}</li>
+          <ListItem primaryText={todo} onDoubleClick={this._delete.bind(null, index)} />
+          {/* <li onDoubleClick={this._delete.bind(null, index)}>{todo}</li> */}
           <span onClick={this._openModal.bind(null, index, todo)}><FontIcon className="material-icons" style={iconStyles}>edit</FontIcon></span>
         </div>
       )
@@ -94,11 +97,12 @@ export default class TodoApp extends Component {
     return (
       <div>
         <h3>Todo List</h3>
-        <button className="btn btn-default" onClick={this._sort}>Sort A-Z</button>
+        <FlatButton label="Sort A-Z" onClick={this._sort}/>
+        {/* <button className="btn btn-default" onClick={this._sort}>Sort A-Z</button> */}
         <TodoFilter todos={todos} filterTodos={this._filter}/>
-        <ol>
+        <List>
           {Todos}
-        </ol>
+        </List>
 
         <Modal show={this.state.showModal} onHide={this._closeModal}>
           <form onSubmit={this._edit}>

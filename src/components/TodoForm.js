@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
+//import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 const style = {
   addButton: {
-    margin: 12,
-    backgroundColor: "blue"
+    marginRight: 20
   }
 };
 
@@ -50,7 +52,10 @@ export default class TodoForm extends Component {
           value={todo}
         /><br />
         {/* <input type="text" value={todo} onChange={this._onInputChange} className="form-control"/> */}
-        <RaisedButton label="Add" secondary={true} style={style.addButton} />
+        {/* <RaisedButton label="Add" secondary={true} style={style.addButton} /> */}
+        <FloatingActionButton style={style.addButton}>
+          <ContentAdd />
+        </FloatingActionButton>
       </form>
     )
   }
